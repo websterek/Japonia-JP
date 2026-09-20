@@ -11,7 +11,7 @@ for attempt in range(18):
         assert manifest['revision']==revision,'Older deployment is still cached'
         with urlopen(base+'?v='+revision,timeout=25) as response:
             html=response.read().decode('utf-8')
-        assert 'photo-editorial-v1' in html and html.count('<img ')>=15
+        assert 'photo-editorial-gallery-v2' in html and html.count('<img ')>=45 and 'data-gallery' in html
         for path in manifest['photos']:
             with urlopen(base+path,timeout=25) as response:
                 assert response.status==200
