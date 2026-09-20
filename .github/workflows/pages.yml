@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   deploy:
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,32 +24,44 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Prepare build tools
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/site-venv"
+          echo "$RUNNER_TEMP/site-venv/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/site-venv/bin/python" -m pip install --disable-pip-version-check --quiet Pillow==11.3.0 beautifulsoup4==4.13.4 playwright==1.55.0
+      - name: Restore licensed photograph cache
+        uses: actions/cache@v4
+        with:
+          path: .photo-cache
+          key: japonia-photographs-v1-${{ hashFiles('presentation/build.py') }}
+          restore-keys: japonia-photographs-v1-
+      - name: Build photographic presentation
+        run: python presentation/build.py
+      - name: Test desktop and mobile rendering
+        run: python presentation/check.py
+      - name: Save reviewed presentation and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presentation-preview
+          path: |
+            preview/
+            _site/
+          retention-days: 7
+          if-no-files-found: ignore
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Verify public website
-        shell: bash
+      - name: Verify public website and photographs
         env:
           SITE_URL: ${{ steps.deployment.outputs.page_url }}
-        run: |
-          for attempt in {1..12}; do
-            http_code="$(curl --silent --show-error --location --max-time 20 \
-              --header 'Cache-Control: no-cache' \
-              --output "$RUNNER_TEMP/public-page.html" \
-              --write-out '%{http_code}' "$SITE_URL" || true)"
-            if [[ "$http_code" == "200" ]] && grep -q 'Japonia 2027' "$RUNNER_TEMP/public-page.html"; then
-              echo "Verified: HTTP 200; itinerary present; URL: $SITE_URL"
-              printf '### Published website\n\n[%s](%s)\n\nVerified HTTP 200 and itinerary content without authentication.\n' "$SITE_URL" "$SITE_URL" >> "$GITHUB_STEP_SUMMARY"
-              exit 0
-            fi
-            echo "Attempt $attempt: HTTP $http_code; publication not yet verified."
-            sleep 5
-          done
-          echo '::error::Public website did not return HTTP 200 with the expected itinerary.'
-          exit 1
+        run: python presentation/verify_public.py
