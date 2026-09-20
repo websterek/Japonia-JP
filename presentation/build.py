@@ -13,22 +13,64 @@ OUT = ROOT / '_site'
 CACHE = ROOT / '.photo-cache'
 UA = 'Japonia-JP presentation/1.0 (https://github.com/websterek/Japonia-JP)'
 PHOTOS = {
- 'shibuya': ('Shibuya_Crossing_2018_Shibuya_Crossing_Cropped.jpg', 'Shibuya, Tokio', 'Kakidai', 'CC BY-SA 4.0'),
+ 'shibuya': ('Shibuya_Crossing_2018_Shibuya_Crossing_Cropped.jpg', 'Shibuya Crossing', 'Kakidai', 'CC BY-SA 4.0'),
+ 'shibuya_sky': ('A_view_of_Tokyo_city_from_Shibuya_Sky,_Tokyo,_Japan.jpg', 'Widok z Shibuya Sky', 'Joli Rumi', 'CC BY-SA 4.0'),
+ 'meiji': ('The_entrance_to_Meiji_Jingu,_Tokyo,_Japan.jpg', 'Wejście do Meiji Jingu', 'Joli Rumi', 'CC BY-SA 4.0'),
  'ghibli': ('Ghibli_Museum_2024.JPG', 'Ghibli Museum, Mitaka', 'Fotointheworld', 'CC BY 4.0'),
+ 'shinjuku': ('Shinjuku_by_night.jpg', 'Shinjuku nocą', 'Bobak', 'CC BY-SA 2.5'),
+ 'sensoji': ('Kaminarimon_at_Sensōji.jpg', 'Kaminarimon, Sensō-ji', 'Christophe95', 'CC BY-SA 4.0'),
  'akihabara': ('Akihabara_2006-02-23_a.jpg', 'Akihabara, Tokio', 'Noface', 'Public domain'),
  'kiyomizu': ('Kiyomizu-dera,_Kyoto,_November_2016_-01.jpg', 'Kiyomizu-dera, Kioto', 'Martin Falbisoner', 'CC BY-SA 4.0'),
+ 'pontocho': ('Pontocho_(44953510015).jpg', 'Pontochō wieczorem', 'Benh LIEU SONG', 'CC BY-SA 4.0'),
+ 'fushimi': ('Fushimi-Inari_Torii.jpg', 'Torii w Fushimi Inari', 'Takipoint123', 'CC BY-SA 4.0'),
  'nintendo': ('Nintendo_Museum_Entrance.jpg', 'Nintendo Museum, Uji', 'Nagomijirap', 'CC BY-SA 4.0'),
+ 'byodoin': ('Byodoin.jpg', 'Byōdō-in, Uji', 'Cun Cun', 'CC BY-SA 4.0'),
+ 'arashiyama': ('Arashiyama_Bamboo_Grove.jpg', 'Bambusowy las Arashiyama', 'Mitchwandrew', 'CC BY 4.0'),
  'kinkaku': ('Kinkaku-ji_2009-03-22.jpg', 'Kinkaku-ji, Kioto', 'Kzaral', 'CC BY 2.0'),
  'usj': ('USJ_Super_Nintendo_World_overview.jpg', 'Super Nintendo World, Osaka', 'Jpatokal', 'CC BY-SA 4.0'),
- 'dotonbori': ('Dotonbori,_Osaka,_at_night,_November_2016.jpg', 'Dotonbori, Osaka', 'Martin Falbisoner', 'CC BY-SA 4.0'),
- 'nara': ('The_deer_near_Nara_Park_(2).jpg', 'Park w Narze', 'Tokumeigakarinoaoshima', 'CC BY-SA 4.0'),
+ 'usj_alt': ('Super_Nintendo_World_at_Universal_Studies_Japan_20220814.jpg', 'Super Nintendo World', '高砂の浦', 'CC0'),
+ 'harry': ('Wizarding_World_of_Harry_Potter_USJ.JPG', 'Wizarding World of Harry Potter, USJ', 'Freddo', 'CC BY-SA 4.0'),
+ 'dotonbori': ('Dotonbori,_Osaka,_at_night,_November_2016.jpg', 'Dōtonbori nocą', 'Martin Falbisoner', 'CC BY-SA 4.0'),
+ 'osaka_castle': ('Osaka_Castle,_Osaka,_Japan.jpg', 'Zamek Osaka', 'Joli Rumi', 'CC BY-SA 4.0'),
+ 'nara': ('The_deer_near_Nara_Park_(2).jpg', 'Jelenie w Narze', 'Tokumeigakarinoaoshima', 'CC BY-SA 4.0'),
+ 'todaiji': ('Todai-ji,_Nara.JPG', 'Tōdai-ji, Nara', 'Løken', 'CC BY-SA 3.0'),
  'hakone': ('LakeAshi_and_MtFuji_Hakone.JPG', 'Jezioro Ashi i Fuji, Hakone', 'Kentagon; korekta: Uu7', 'CC BY-SA 4.0'),
+ 'owakudani': ('A_view_of_Owakudani_-_a_volcanic_valley_with_active_sulphur_vents_in_Hakone,_Japan.jpg', 'Owakudani, Hakone', 'Joli Rumi', 'CC BY-SA 4.0'),
+ 'hamarikyu': ('Hamarikyu_Gardens.jpg', 'Hamarikyū Gardens, Tokio', 'Eddy23', 'CC BY-SA 4.0'),
  'station': ('Tokyo_station_from_above.jpg', 'Tokyo Station', 'LR0725', 'CC BY-SA 4.0'),
- 'nikko': ('Nikko_Toshogu_Yomeimon_Gate_2024.jpg', 'Brama Yomeimon, Nikko', 'Jpatokal', 'CC BY-SA 4.0'),
- 'odaiba': ('Odaiba_at_night.jpg', 'Odaiba i Zatoka Tokijska', 'Brian Kemper', 'CC BY-SA 3.0')
+ 'nikko': ('Nikko_Toshogu_Yomeimon_Gate_2024.jpg', 'Brama Yōmeimon, Nikkō', 'Jpatokal', 'CC BY-SA 4.0'),
+ 'kegon': ('Kegon_Falls,_Nikko_National_Park,_Japan1.jpg', 'Wodospad Kegon, Nikkō', 'Joli Rumi', 'CC BY-SA 4.0'),
+ 'tsukiji': ('Tsukiji_Outside_Market.jpg', 'Tsukiji Outer Market', 'Jnlin', 'CC BY-SA 3.0'),
+ 'odaiba': ('Odaiba_at_night.jpg', 'Odaiba i Zatoka Tokijska', 'Brian Kemper', 'CC BY-SA 3.0'),
+ 'rainbow': ('Rainbow_bridge_from_odaiba.jpg', 'Rainbow Bridge z Odaiby', 'fox kiyo', 'CC BY-SA 2.0')
 }
-LICENCES = {'CC BY-SA 4.0':'https://creativecommons.org/licenses/by-sa/4.0/', 'CC BY 4.0':'https://creativecommons.org/licenses/by/4.0/', 'CC BY 2.0':'https://creativecommons.org/licenses/by/2.0/', 'CC BY-SA 3.0':'https://creativecommons.org/licenses/by-sa/3.0/', 'Public domain':'https://commons.wikimedia.org/wiki/Commons:Public_domain'}
-DAY_PHOTOS = [None, 'shibuya', 'ghibli', 'akihabara', 'kiyomizu', 'nintendo', 'kinkaku', 'usj', 'dotonbori', 'nara', 'hakone', 'station', 'nikko', 'odaiba', 'station']
+LICENCES = {
+ 'CC BY-SA 4.0':'https://creativecommons.org/licenses/by-sa/4.0/',
+ 'CC BY 4.0':'https://creativecommons.org/licenses/by/4.0/',
+ 'CC BY 2.0':'https://creativecommons.org/licenses/by/2.0/',
+ 'CC BY-SA 3.0':'https://creativecommons.org/licenses/by-sa/3.0/',
+ 'CC BY-SA 2.5':'https://creativecommons.org/licenses/by-sa/2.5/',
+ 'CC BY-SA 2.0':'https://creativecommons.org/licenses/by-sa/2.0/',
+ 'CC0':'https://creativecommons.org/publicdomain/zero/1.0/',
+ 'Public domain':'https://commons.wikimedia.org/wiki/Commons:Public_domain'
+}
+DAY_GALLERIES = [
+ [],
+ ['shibuya','shibuya_sky'],
+ ['meiji','ghibli','shinjuku'],
+ ['sensoji','akihabara'],
+ ['kiyomizu','pontocho'],
+ ['fushimi','nintendo','byodoin'],
+ ['arashiyama','kinkaku'],
+ ['usj','usj_alt','harry'],
+ ['osaka_castle','dotonbori'],
+ ['nara','todaiji'],
+ ['hakone','owakudani'],
+ ['hamarikyu','station'],
+ ['nikko','kegon'],
+ ['tsukiji','odaiba','rainbow'],
+ ['station','shibuya']
+]
 
 
 def download_photo(key, row):
@@ -70,9 +112,24 @@ def download_photo(key, row):
         print(f'PHOTO OK {key}: {img.width}x{img.height}', flush=True)
 
 
-def figure(key, extra='', eager=False):
+def figure(key, extra='', eager=False, slide_index=None):
     filename, title, author, licence = PHOTOS[key]
-    return f'''<figure class="photograph {extra}"><a class="photo-link" href="assets/photos/{key}.webp" target="_blank" rel="noopener" aria-label="Otwórz zdjęcie: {escape(title)}"><img src="assets/photos/{key}.webp" srcset="assets/photos/{key}-small.webp 720w, assets/photos/{key}.webp 1440w" sizes="(max-width: 700px) 100vw, 55vw" alt="{escape(title)}" loading="{'eager' if eager else 'lazy'}" decoding="async" {'fetchpriority="high"' if eager else ''} width="1440" height="1080"></a><figcaption><span>{escape(title)}</span><a href="#photo-{key}">fot. {escape(author)}</a></figcaption></figure>'''
+    classes = 'photograph'
+    if extra:
+        classes += ' ' + extra
+    data = f' data-slide="{slide_index}"' if slide_index is not None else ''
+    return f'''<figure class="{classes}"{data}><a class="photo-link" href="assets/photos/{key}.webp" target="_blank" rel="noopener" aria-label="Otwórz zdjęcie: {escape(title)}"><img src="assets/photos/{key}.webp" srcset="assets/photos/{key}-small.webp 720w, assets/photos/{key}.webp 1440w" sizes="(max-width: 700px) 100vw, 55vw" alt="{escape(title)}" loading="{'eager' if eager else 'lazy'}" decoding="async" {'fetchpriority="high"' if eager else ''} width="1440" height="1080"></a><figcaption><span>{escape(title)}</span><a href="#photo-{key}">fot. {escape(author)}</a></figcaption></figure>'''
+
+
+def gallery(keys, day_index):
+    if not keys:
+        return ''
+    slides = ''.join(figure(key, 'gallery-slide' + (' is-active' if i == 0 else ''), False, i) for i, key in enumerate(keys))
+    thumbs = []
+    for i, key in enumerate(keys):
+        title = PHOTOS[key][1]
+        thumbs.append(f'''<button type="button" class="gallery-thumb{' is-active' if i == 0 else ''}" data-gallery-to="{i}" aria-label="Pokaż zdjęcie {i+1}: {escape(title)}" aria-pressed="{'true' if i == 0 else 'false'}"><img src="assets/photos/{key}-small.webp" alt="" loading="lazy" decoding="async"></button>''')
+    return f'''<div class="day-gallery" data-gallery tabindex="0" aria-label="Galeria dnia {day_index}"><div class="gallery-stage">{slides}<div class="gallery-controls"><button type="button" class="gallery-arrow gallery-prev" data-gallery-prev aria-label="Poprzednie zdjęcie">←</button><span class="gallery-counter" data-gallery-counter aria-live="polite">1 / {len(keys)}</span><button type="button" class="gallery-arrow gallery-next" data-gallery-next aria-label="Następne zdjęcie">→</button></div></div><div class="gallery-thumbs">{''.join(thumbs)}</div></div>'''
 
 
 def main():
@@ -90,7 +147,7 @@ def main():
     for style in soup.find_all('style'):
         style.decompose()
     revision = os.getenv('GITHUB_SHA', 'local')[:12]
-    head = BeautifulSoup(f'''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/site.css?v={revision}"><meta name="site-design" content="photo-editorial-v1"><meta name="site-revision" content="{revision}">''','html.parser')
+    head = BeautifulSoup(f'''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/site.css?v={revision}"><script defer src="assets/site.js?v={revision}"></script><meta name="site-design" content="photo-editorial-gallery-v2"><meta name="site-revision" content="{revision}">''','html.parser')
     for tag in list(head.contents):
         soup.head.append(tag)
     theme = soup.find('meta', attrs={'name':'theme-color'})
@@ -123,8 +180,8 @@ def main():
             details.append(summary)
             details.append(note)
         grid=soup.new_tag('div',attrs={'class':'day-layout'})
-        if DAY_PHOTOS[index]:
-            grid.append(BeautifulSoup(figure(DAY_PHOTOS[index]),'html.parser'))
+        if DAY_GALLERIES[index]:
+            grid.append(BeautifulSoup(gallery(DAY_GALLERIES[index], index),'html.parser'))
         else:
             day['class'].append('travel-day')
         grid.append(body)
@@ -150,8 +207,9 @@ def main():
     footer.append(BeautifulSoup('<a class="back-top" href="#start">Wróć na początek ↑</a>','html.parser'))
     (OUT/'index.html').write_text(str(soup),encoding='utf-8')
     shutil.copyfile(ROOT/'presentation/site.css', OUT/'assets/site.css')
+    shutil.copyfile(ROOT/'presentation/site.js', OUT/'assets/site.js')
     (OUT/'.nojekyll').write_text('')
-    manifest={'design':'photo-editorial-v1','revision':revision,'photos':[f'assets/photos/{key}.webp' for key in PHOTOS]}
+    manifest={'design':'photo-editorial-gallery-v2','revision':revision,'photos':[f'assets/photos/{key}.webp' for key in PHOTOS], 'galleries':DAY_GALLERIES}
     (OUT/'manifest.json').write_text(json.dumps(manifest),encoding='utf-8')
     print(f'BUILT: {len(days)} days, {len(PHOTOS)} locally hosted photographs, revision {revision}',flush=True)
 
