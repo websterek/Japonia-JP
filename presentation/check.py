@@ -25,7 +25,14 @@ with sync_playwright() as p:
         page.evaluate('document.fonts.ready')
         result=page.evaluate('''() => ({width: innerWidth, contentWidth:document.documentElement.scrollWidth, images:document.images.length, imagesLoaded:[...document.images].every(i=>i.naturalWidth>300), days:document.querySelectorAll('article.day').length, font:getComputedStyle(document.querySelector('h1')).fontFamily, radius:getComputedStyle(document.querySelector('.photo-link')).borderRadius, ubuntuLoaded:[...document.fonts].some(f=>f.family.includes('Ubuntu') && f.status==='loaded')})''')
         assert result['contentWidth']<=width+1,result
-        assert result['images']>=15 and result['imagesLoaded'],result
+        assert result['images']>=45 and result['imagesLoaded'],result
+        gallery_count=page.locator('[data-gallery]').count()
+        assert gallery_count>=14,gallery_count
+        gallery=page.locator('[data-gallery]').first
+        before=gallery.locator('.gallery-slide.is-active').get_attribute('data-slide')
+        gallery.locator('[data-gallery-next]').click()
+        after=gallery.locator('.gallery-slide.is-active').get_attribute('data-slide')
+        assert before != after,(before,after)
         assert result['days']==15,result
         assert 'Ubuntu' in result['font'] and result['radius']=='0px',result
         assert not errors,errors
