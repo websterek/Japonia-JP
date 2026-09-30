@@ -20,6 +20,7 @@ PHOTOS = {
  'shinjuku': ('Shinjuku_by_night.jpg', 'Shinjuku nocą', 'Bobak', 'CC BY-SA 2.5'),
  'sensoji': ('Kaminarimon_at_Sensōji.jpg', 'Kaminarimon, Sensō-ji', 'Christophe95', 'CC BY-SA 4.0'),
  'akihabara': ('Akihabara_2006-02-23_a.jpg', 'Akihabara, Tokio', 'Noface', 'Public domain'),
+ 'tokyo_tower': ('Tokyo_Tower_at_night.jpg', 'Tokyo Tower nocą', 'Douglas P Perkins', 'Public domain'),
  'kiyomizu': ('Kiyomizu-dera,_Kyoto,_November_2016_-01.jpg', 'Kiyomizu-dera, Kioto', 'Martin Falbisoner', 'CC BY-SA 4.0'),
  'pontocho': ('Pontocho_(44953510015).jpg', 'Pontochō wieczorem', 'Benh LIEU SONG', 'CC BY-SA 4.0'),
  'fushimi': ('Fushimi-Inari_Torii.jpg', 'Torii w Fushimi Inari', 'Takipoint123', 'CC BY-SA 4.0'),
@@ -38,6 +39,7 @@ PHOTOS = {
  'owakudani': ('A_view_of_Owakudani_-_a_volcanic_valley_with_active_sulphur_vents_in_Hakone,_Japan.jpg', 'Owakudani, Hakone', 'Joli Rumi', 'CC BY-SA 4.0'),
  'hamarikyu': ('Hamarikyu_Gardens.jpg', 'Hamarikyū Gardens, Tokio', 'Eddy23', 'CC BY-SA 4.0'),
  'station': ('Tokyo_station_from_above.jpg', 'Tokyo Station', 'LR0725', 'CC BY-SA 4.0'),
+ 'imperial': ('East_Gardens_of_Tokyo_Imperial_Palace_皇居東御苑.JPG', 'Imperial Palace East Gardens', 'Arashiyama', 'CC BY-SA 3.0'),
  'nikko': ('Nikko_Toshogu_Yomeimon_Gate_2024.jpg', 'Brama Yōmeimon, Nikkō', 'Jpatokal', 'CC BY-SA 4.0'),
  'kegon': ('Kegon_Falls,_Nikko_National_Park,_Japan1.jpg', 'Wodospad Kegon, Nikkō', 'Joli Rumi', 'CC BY-SA 4.0'),
  'tsukiji': ('Tsukiji_Outside_Market.jpg', 'Tsukiji Outer Market', 'Jnlin', 'CC BY-SA 3.0'),
@@ -58,15 +60,15 @@ DAY_GALLERIES = [
  [],
  ['shibuya','shibuya_sky'],
  ['meiji','ghibli','shinjuku'],
- ['sensoji','akihabara'],
+ ['sensoji','akihabara','tokyo_tower'],
  ['kiyomizu','pontocho'],
- ['fushimi','nintendo','byodoin'],
+ ['fushimi','nintendo'],
  ['arashiyama','kinkaku'],
  ['usj','usj_alt','harry'],
  ['osaka_castle','dotonbori'],
  ['nara','todaiji'],
  ['hakone','owakudani'],
- ['hamarikyu','station'],
+ ['imperial','station'],
  ['nikko','kegon'],
  ['tsukiji','odaiba','rainbow'],
  ['station','shibuya']
@@ -147,7 +149,7 @@ def main():
     for style in soup.find_all('style'):
         style.decompose()
     revision = os.getenv('GITHUB_SHA', 'local')[:12]
-    head = BeautifulSoup(f'''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/site.css?v={revision}"><script defer src="assets/site.js?v={revision}"></script><meta name="site-design" content="photo-editorial-gallery-v2"><meta name="site-revision" content="{revision}">''','html.parser')
+    head = BeautifulSoup(f'''<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/site.css?v={revision}"><script defer src="assets/site.js?v={revision}"></script><meta name="site-design" content="photo-editorial-gallery-v3"><meta name="site-revision" content="{revision}">''','html.parser')
     for tag in list(head.contents):
         soup.head.append(tag)
     theme = soup.find('meta', attrs={'name':'theme-color'})
@@ -209,7 +211,7 @@ def main():
     shutil.copyfile(ROOT/'presentation/site.css', OUT/'assets/site.css')
     shutil.copyfile(ROOT/'presentation/site.js', OUT/'assets/site.js')
     (OUT/'.nojekyll').write_text('')
-    manifest={'design':'photo-editorial-gallery-v2','revision':revision,'photos':[f'assets/photos/{key}.webp' for key in PHOTOS], 'galleries':DAY_GALLERIES}
+    manifest={'design':'photo-editorial-gallery-v3','revision':revision,'photos':[f'assets/photos/{key}.webp' for key in PHOTOS], 'galleries':DAY_GALLERIES}
     (OUT/'manifest.json').write_text(json.dumps(manifest),encoding='utf-8')
     print(f'BUILT: {len(days)} days, {len(PHOTOS)} locally hosted photographs, revision {revision}',flush=True)
 
