@@ -85,7 +85,8 @@ def download_photo(key, row):
         thumbnail = f'https://upload.wikimedia.org/wikipedia/commons/thumb/{digest[0]}/{digest[:2]}/{encoded}/1280px-{encoded}'
         errors = []
         for url in (thumbnail, original):
-            for attempt in range(2):
+            for attempt in range(4):
+                time.sleep(2.0)
                 try:
                     with urlopen(Request(url, headers={'User-Agent': UA}), timeout=45) as response:
                         data = response.read(40 * 1024 * 1024 + 1)
@@ -97,7 +98,11 @@ def download_photo(key, row):
                     break
                 except Exception as exc:
                     errors.append(str(exc))
-                    time.sleep(2 + attempt * 3)
+                    message = str(exc)
+                    if '429' in message:
+                        time.sleep(20 + attempt * 20)
+                    else:
+                        time.sleep(4 + attempt * 4)
             if cache.exists():
                 break
         if not cache.exists():
