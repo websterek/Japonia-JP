@@ -56,3 +56,12 @@ body{font-size:18px;line-height:1.62}
  .summary{font-size:12.5px}.option p{font-size:13px}.mini p{font-size:13px}
 }
 @media print{.gallery-controls,.gallery-thumbs{display:none!important}.gallery-slide{display:none!important}.gallery-slide:first-child{display:block!important}}
+
+/* Accommodation and transport additions */
+#noclegi .mini h3,#transport .mini h3{font-size:18px;line-height:1.4}
+#noclegi .mini p,#transport .mini p{font-size:15px;line-height:1.7;overflow-wrap:anywhere}
+#noclegi .mini p.eyebrow{font-size:11px}
+#noclegi .mini a,#transport .mini a{display:inline-block;text-decoration:underline;text-underline-offset:3px}
+.dayhead .summary a{text-decoration:underline;text-underline-offset:3px}
+.nav .brand{flex-shrink:0}.navlinks{min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:thin;gap:clamp(12px,2vw,28px)}.navlinks a{flex-shrink:0;padding:8px 0}
+@media(max-width:760px){.nav{gap:14px}.navlinks{gap:14px}#noclegi .mini p,#transport .mini p{font-size:15px}}
